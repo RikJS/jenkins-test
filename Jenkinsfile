@@ -1,16 +1,29 @@
-pipeline {
-    agent any
+node {
+def server = Artifactory.server 'art-1'
 
-    stages {
-        stage('Build') {
-            steps {
-
-            }
-        }
-        stage('Deploy') {
-            steps {
-               
-            }
-        }
+def uploadSpec = """{
+  "files": [
+    {
+      "pattern": "*",
+      "target": "jenkins-test/"
     }
+ ]
+}"""
+
+ def buildInfo1 = server.upload spec: uploadSpec
+
+ def downloadSpec = """{
+  "files": [
+   {
+       "pattern": "*",
+       "target": "jenkins-test/"
+     }
+  ]
+ }"""
+
+ def buildInfo2 = server.download spec: downloadSpec
+
+ buildInfo1.append buildInfo2
+
+ server.publishBuildInfo buildInfo1
 }
