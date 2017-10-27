@@ -1,10 +1,11 @@
 node {
-def server = Artifactory.server 'art-1'
+def server = Artifactory.newServer url: 'http://192.168.99.100:32770/artifactory/', username: 'admin', password: 'password'
+server.bypassProxy = true
 
 def uploadSpec = """{
   "files": [
     {
-      "pattern": "*",
+      "pattern": "jenkins-test/*",
       "target": "jenkins-test/"
     }
  ]
@@ -15,7 +16,7 @@ def uploadSpec = """{
  def downloadSpec = """{
   "files": [
    {
-       "pattern": "*",
+       "pattern": "jenkins-test/*",
        "target": "jenkins-test/"
      }
   ]
