@@ -5,7 +5,7 @@ node {
         def uploadSpec = """{
           "files": [
             {
-              "pattern": "*",
+              "pattern": "jenkins-test/*",
               "target": "jenkins-test/"
             }
          ]
@@ -15,7 +15,7 @@ node {
         def downloadSpec = """{
           "files": [
            {
-               "pattern": "*",
+               "pattern": "jenkins-test/*",
                "target": "jenkins-test/"
              }
           ]
