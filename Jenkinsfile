@@ -27,10 +27,9 @@ node {
          server.publishBuildInfo buildInfo1
     }
     stage('SonarQube analysis') {
-        // requires SonarQube Scanner 2.8+
-        def scannerHome = tool 'SonarQube Scanner 2.8';
         withSonarQubeEnv('sonar1') {
-          sh "${scannerHome}/bin/sonar-scanner"
+          // requires SonarQube Scanner for Maven 3.2+
+          sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
         }
       }
 }
