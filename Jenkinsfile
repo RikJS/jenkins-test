@@ -27,12 +27,12 @@ node {
          server.publishBuildInfo buildInfo1
     }
     stage('SonarQube analysis') {
-        // requires SonarQube Scanner 2.8+
-        def scannerHome = tool 'SonarQube Scanner 2.8';
-        withSonarQubeEnv('sonar1') {
-          sh "${scannerHome}/bin/sonar-scanner" +
-           "-Dsonar.projectKey=jenkinstest:project " +
-           "-Dsonar.sources=src " +
-        }
-      }
+            // requires SonarQube Scanner 2.8+
+            def scannerHome = tool 'SonarQube Scanner 2.8';
+            withSonarQubeEnv('sonar1') {
+              sh "${scannerHome}/bin/sonar-scanner " +
+               "-Dsonar.projectKey=jenkinstest:project " +
+               "-Dsonar.sources=src " +
+            }
+    }
 }
