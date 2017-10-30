@@ -5,7 +5,7 @@ node {
         def uploadSpec = """{
           "files": [
             {
-              "pattern": "jenkins-test/*",
+              "pattern": "*",
               "target": "jenkins-test/"
             }
          ]
@@ -15,7 +15,7 @@ node {
         def downloadSpec = """{
           "files": [
            {
-               "pattern": "jenkins-test/*",
+               "pattern": "*",
                "target": "jenkins-test/"
              }
           ]
@@ -32,7 +32,7 @@ node {
             withSonarQubeEnv('sonar1') {
               sh "${scannerHome}/bin/sonar-scanner " +
                "-Dsonar.projectKey=jenkinstest:project " +
-               "-Dsonar.sources=jenkins-test/src "
+               "-Dsonar.sources=. "
             }
     }
 }
