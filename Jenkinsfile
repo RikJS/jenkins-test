@@ -32,7 +32,7 @@ node {
             withSonarQubeEnv('sonar1') {
               sh "${scannerHome}/bin/sonar-scanner " +
                "-Dsonar.projectKey=jenkinstest:project " +
-               "-Dsonar.sources=src " +
+               "-Dsonar.sources=src "
             }
     }
 }
